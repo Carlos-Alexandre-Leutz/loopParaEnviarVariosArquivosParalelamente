@@ -1,0 +1,86 @@
+<!--Creditos Carlos Alexandre Leutz-->
+<!--https://www.linkedin.com/in/carlos-leutz-1b1516185/-->
+<!--https://www.instagram.com/carlosalexandreleutz/?hl=pt-br-->
+
+
+<input id="Doc" type="file" multiple="multiple" />
+
+
+<script>
+    var documentos = [], // <-- crando o aray que vai receber os doc mais a baixo com o .push
+        Input = document.querySelector("#Doc"); //id do input
+    //Input = document.querySelector("input"); //inico input da tela
+    // Input = document.querySelector(".classDoInputAqui"); //class do input
+
+    Input.onchange = function() {
+        /*
+         * O onchange é nativo do js então ao adicionar arquivos, então chama a função
+         * da propriedade onchange no seu elemento 'DOM'.
+         */
+        Input = this; //<-- meu input vai reseber o obj da função 
+        for (var i = 0, Length = Input.files.length; Length > i; i++)
+        /*
+         * Esse é um loop para cada arquivo adicionado;
+         * Vai de 0 até o fim;
+         * Variável i é a posição atual na lista em número (integer, 0)
+         */
+            (function(i) {
+            documentos.push(Input.files[i])
+                /*
+                 * O método push() adiciona um ou mais elementos ao final de um array e retorna o novo comprimento desse array.
+                    
+                 * Vai acontecer o mesmo para cada doc;
+                 * Input.files é uma array com os doc (e uma propriedade da sua input);
+                 * Input.files[0] retornaria o primeiro item da lista (array)
+                 * Input.files[1] retornaria o segundo item da lista (array) ...
+                 * A função Array.prototype.push adiciona o item no primeiro parâmetro para sua array, na última posição 
+                 */
+        })(i);
+        i = Length = Input = null
+
+        console.log(documentos) //<-- aqui documentos é a variavel q=com todos os documentos em uma posição do array
+
+        armazenaExcluiIndice0DoAray();
+    }
+
+
+
+
+    function armazenaExcluiIndice0DoAray() {
+
+        var indice0DoArrayDocumentos = documentos[0] //o que vai ser enviado 
+        console.log(indice0DoArrayDocumentos)
+
+        var firstElement = documentos.shift(); //<-- exclui o índice 0 do array
+        console.log(documentos)
+
+
+
+        if0(); //<-- chamando a procima função pra criar um loop sem o for
+
+
+    }
+
+
+
+    function if0() {
+
+        if (documentos == 0) {
+            console.log('array vazio')
+        } else {
+
+
+            ajax();
+
+
+        }
+    }
+
+    function ajax() {
+        // seu ajax aqui para eviar os documentos 
+
+
+        armazenaExcluiIndice0DoAray();
+
+    }
+</script>
